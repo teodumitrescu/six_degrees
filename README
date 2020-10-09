@@ -1,0 +1,29 @@
+DUMITRESCU IOANA-TEOORA, 315CD
+
+Pentru elaborarea temei, am luat in considerare fisierele biblioteci de la ultimele laboratoare realizate, pentru a utiliza functiile implementate deja pentru crearea unei liste, a unei matrice de adiacenta si alte cateva functii de baza, precum si structurile din acestea (cu cateva modificari).
+
+Citirea fisierului de intrare se relizeaza pe randuri, stringurile corespunzand numerelor fiind transformate in intregi cu ajutorul functiei "atoi".
+Toate numele actorilor se tin intr-un hashtable, care de asemenea, va atribui fiecarui nume nou un numar al nodului din graf. Hashtable-ul se realizeaza cu ajutorul unei functii separate, iar pentru dimensiunea acestuia (la care vom si imparti pentr a calcula hash-ului) a fost ales un numar prim indeajuns de mare incat listele din acesta sa depaseasca rar un element. Astfel, se verifica mult mai repede daca un actor a fost deja citit sau nu.
+
+In aceeasi functie, se retin numele actorilor intr-o matrice, la pozitia corespunzatoare numarului atribuit. Aceasta va fi de ajutor la formarea outputului, in principal, gasindu-e solutiile in functie de numerele nodurilor (pentru usurinta), in loc sa se retina mereu tot numele.
+
+Formarea grafului cu liste de adiacenta se realizeaza prin recitirea fisierului si formarea unei matrici cu filmul curent in care se pun toti actorii din acesa, ea urmand sa fie parcursa pentru a se adauga muchiile (actiune realizata cu ajutorul unei functii create in biblioteca).
+
+---------------------------------- CERINTA 1 -----------------------------------
+
+Pentru a gasi productia cu cei mai multi actori, efectuam o parcurgere in adancime din fiecare nod, si marcand intr-un vector de vizitati atunci cand acesta a fost intalnit si face parte deja dintr-o componenta conexa, pentru a nu aplica algoritmul pe aceeasi componenta. Atunci cand numarul de actori din componenta conexa este returnat de functia "find component", acesta este comparat cu maximul de pana atunci. Daca este mai mare, atunci vectorul in care se retin nodurile ce apartin componentei conexe sunt returnate de "solveC1".
+
+In "outputC1", sunt ordonate alabetic nodurile cu ajutorul matricii "allActorsCorrelation", apoi scrise in fisier.
+
+---------------------------------- CERINTA 2 -----------------------------------
+
+Pentru rezolvarea cerintei, se parcurge pe nivele componenta conexa din care face parte primul actor, tinandu-se intr-un vector distanta parcursa.
+Functia "solveC2", returneaza valoarea din vectorul de distante corespunzatoare actorului al doilea. Daca valoarea a ramas 0, inseamna ca actorul respectiv nu face parte din aceeasi componenta conexa cu primul actor, asa ca se va scrie in fisier vaoarea "-1".
+
+---------------------------------- CERINTA 3 -----------------------------------
+
+Pentru rezolvarea cerintei, se foloseste algoritmul lui Tarjan, mai exact pseudocodul precizat in enuntul temei. Functia "dfsB" gaseste puntile dintre actori si le plaseaza intr-un vector de structuri "pairs", punand direct in ordine alfabetica cei doi actori din punte (numerele nodurilor acestora). Functia "punti" returneaza vectorul de punti, ce mai apoi este sortat in ordine alfabetica dupa primul actor, respectiv dupa al doilea in caz de egalitate.
+
+Functia "outputC3" scrie in fisier perechile sortate.
+
+Erorile de valgrind au fost evitate prin dezalocarea cu atentie a tuturor variabilelor alocate.
